@@ -97,7 +97,7 @@ python scripts/chat_pascal_lora.py --profile zh
 聊天脚本默认是单轮模式，这更适合检查 LoRA 是否学到了语录风格。如果想保留多轮历史：
 
 ```bash
-python scripts/chat_pascal_lora.py --profile en --max-history-turns 6
+python scripts/chat_pascal_lora.py --profile zh --max-history-turns 6
 ```
 
 聊天循环内支持：

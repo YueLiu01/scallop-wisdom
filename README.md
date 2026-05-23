@@ -112,8 +112,8 @@ You can override a profile's adapter:
 
 ```bash
 python scripts/chat_pascal_lora.py \
-  --profile zh \
-  --adapter lora/pascal_unsloth_mistral_lora_chs.zip
+  --profile en \
+  --adapter lora/pascal_unsloth_mistral_lora_en.zip
 ```
 
 ## Profiles
@@ -121,21 +121,21 @@ python scripts/chat_pascal_lora.py \
 Profiles are JSON files that describe the character prompt, adapter, labels, and generation defaults. Built-in profiles are `en` and `zh`, and external profile files work too:
 
 ```bash
-python scripts/chat_pascal_lora.py --profile profiles/pascal_zh.json
+python scripts/chat_pascal_lora.py --profile profiles/pascal_en.json
 ```
 
 Example:
 
 ```json
 {
-  "name": "Pascal Chinese",
-  "adapter": "../lora/pascal_unsloth_mistral_lora_chs.zip",
-  "system": "你是《集合啦！动物森友会》里的阿獭……",
+  "name": "Pascal English",
+  "adapter": "../lora/pascal_unsloth_mistral_lora_en.zip",
+  "system": "You are Pascal from Animal Crossing...",
   "labels": {
-    "user": "玩家",
-    "assistant": "阿獭",
-    "exit": "退出。",
-    "reset": "对话历史已清空。"
+    "user": "Player",
+    "assistant": "Pascal",
+    "exit": "Exiting.",
+    "reset": "History reset."
   },
   "generation": {
     "max_history_turns": 0,
