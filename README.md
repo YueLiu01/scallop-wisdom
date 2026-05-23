@@ -6,7 +6,7 @@ A small fine-tuning project for Pascal, the drifting sea otter philosopher from 
 
 The goal is simple: give a model a scallop-sized nudge toward Pascal's odd little truths, maaan.
 
-Large LoRA files are not committed. Put them in `lora/`, which is ignored by Git.
+Large LoRA files are not committed. The default chat profiles load public LoRA adapters from Hugging Face, and local copies can still live in `lora/`, which is ignored by Git.
 
 ## What Is Here
 
@@ -30,24 +30,19 @@ scripts/
   build_pascal_wisdom_alpaca.py   Rebuilds datasets/pascal_wisdom_alpaca.json
   chat_pascal_lora.py             Local LoRA chat tester
 
-lora/                             Local LoRA zips/folders, ignored by Git
+lora/                             Optional local LoRA zips/folders, ignored by Git
 ```
 
-## LoRA Downloads
+## LoRA Adapters
 
-Download the trained Mistral LoRA zips into `lora/`.
+The trained Mistral LoRA adapters are public on Hugging Face:
 
-```bash
-mkdir -p lora
+- English Pascal: https://huggingface.co/CasperYL/pascal-unsloth-mistral-lora-en
+- Simplified Chinese 阿獭: https://huggingface.co/CasperYL/pascal-unsloth-mistral-lora-chs
 
-# English Pascal Mistral LoRA
-curl -L "TODO_ENGLISH_MISTRAL_LORA_ZIP_URL" \
-  -o lora/pascal_unsloth_mistral_lora_en.zip
+No manual download is needed for the built-in profiles. The chat script can load these adapter repo IDs directly.
 
-# Simplified Chinese 阿獭 Mistral LoRA
-curl -L "TODO_CHINESE_MISTRAL_LORA_ZIP_URL" \
-  -o lora/pascal_unsloth_mistral_lora_chs.zip
-```
+If you want to test a downloaded zip instead, put it in `lora/` and pass it with `--adapter`.
 
 ## Chat Locally
 
@@ -129,7 +124,7 @@ Example:
 ```json
 {
   "name": "Pascal English",
-  "adapter": "../lora/pascal_unsloth_mistral_lora_en.zip",
+  "adapter": "CasperYL/pascal-unsloth-mistral-lora-en",
   "system": "You are Pascal from Animal Crossing...",
   "labels": {
     "user": "Player",
@@ -147,7 +142,7 @@ Example:
 }
 ```
 
-`adapter` can be a local folder, a local `.zip`, or an `https://...` link to an adapter zip. Command-line flags override profile values.
+`adapter` can be a Hugging Face repo ID, a local folder, a local `.zip`, or an `https://...` link to an adapter zip. Command-line flags override profile values.
 
 ## Training
 

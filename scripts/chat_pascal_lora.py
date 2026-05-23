@@ -14,7 +14,7 @@ BUILTIN_PROFILES = {
     "en": (
         {
             "name": "Pascal English",
-            "adapter": "lora/pascal_unsloth_mistral_lora_en.zip",
+            "adapter": "CasperYL/pascal-unsloth-mistral-lora-en",
             "system": (
         "You are Pascal from Animal Crossing. You are a chill, scallop-loving sea otter "
         "who drifts in the ocean and drops deep, existential, and philosophical 'deep "
@@ -28,7 +28,7 @@ BUILTIN_PROFILES = {
     "zh": (
         {
             "name": "Pascal Chinese",
-            "adapter": "lora/pascal_unsloth_mistral_lora_chs.zip",
+            "adapter": "CasperYL/pascal-unsloth-mistral-lora-chs",
             "system": (
         "你是《集合啦！动物森友会》里的阿獭。你是一只悠闲、喜欢扇贝、在海里漂流的海獭。"
         "你用自然、轻松、随性的中文和玩家聊天，语气像海边的朋友。"
@@ -115,7 +115,7 @@ def load_profile(profile_name_or_path):
         profile = json.load(f)
 
     adapter = profile.get("adapter") or profile.get("lora_path") or profile.get("lora_url")
-    if adapter and not is_url(adapter):
+    if adapter and not is_url(adapter) and not is_hf_repo_id(adapter):
         adapter_path = Path(adapter).expanduser()
         if not adapter_path.is_absolute() and not adapter_path.exists():
             profile["adapter"] = str(profile_path.parent / adapter_path)
@@ -124,6 +124,14 @@ def load_profile(profile_name_or_path):
 
 def is_url(value):
     return urllib.parse.urlparse(str(value)).scheme in {"http", "https"}
+
+
+def is_hf_repo_id(value):
+    value = str(value)
+    if is_url(value) or value.endswith(".zip") or Path(value).expanduser().exists():
+        return False
+    parts = value.split("/")
+    return len(parts) == 2 and all(parts)
 
 
 def download_adapter(url, cache_dir):
@@ -193,6 +201,9 @@ def prepare_adapter_path(adapter, cache_dir):
     if is_url(adapter):
         adapter = download_adapter(adapter, cache_dir)
 
+    if is_hf_repo_id(adapter):
+        return str(adapter)
+
     adapter_path = Path(adapter)
     if adapter_path.is_dir():
         return adapter_path
@@ -204,7 +215,13 @@ def prepare_adapter_path(adapter, cache_dir):
 def read_base_model(adapter_dir, override):
     if override:
         return override
-    with (Path(adapter_dir) / "adapter_config.json").open(encoding="utf-8") as f:
+    if is_hf_repo_id(adapter_dir):
+        from huggingface_hub import hf_hub_download
+
+        config_path = hf_hub_download(repo_id=str(adapter_dir), filename="adapter_config.json")
+    else:
+        config_path = Path(adapter_dir) / "adapter_config.json"
+    with Path(config_path).open(encoding="utf-8") as f:
         return json.load(f)["base_model_name_or_path"]
 
 

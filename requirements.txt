@@ -2,6 +2,7 @@ transformers
 peft
 accelerate
 bitsandbytes
+huggingface_hub
 sentencepiece
 protobuf
 safetensors

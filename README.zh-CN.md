@@ -6,7 +6,7 @@
 
 目标很简单：给模型一点扇贝大小的推力，让它更容易说出阿獭那种奇妙的小真理。
 
-大的 LoRA 文件不会提交到 Git。请把它们放在 `lora/` 里；这个目录已经被 Git 忽略。
+大的 LoRA 文件不会提交到 Git。默认聊天 profile 会直接从 Hugging Face 加载公开 LoRA adapter；如果你想保留本地副本，也可以放在 `lora/` 里，这个目录已经被 Git 忽略。
 
 ## 仓库内容
 
@@ -30,24 +30,19 @@ scripts/
   build_pascal_wisdom_alpaca.py   重新生成 datasets/pascal_wisdom_alpaca.json
   chat_pascal_lora.py             本地 LoRA 聊天测试脚本
 
-lora/                             本地 LoRA zip/目录，Git 会忽略
+lora/                             可选的本地 LoRA zip/目录，Git 会忽略
 ```
 
-## 下载 LoRA
+## LoRA Adapters
 
-把训练好的 Mistral LoRA zip 下载到 `lora/`。
+训练好的 Mistral LoRA adapters 已经公开上传到 Hugging Face：
 
-```bash
-mkdir -p lora
+- 英文 Pascal：https://huggingface.co/CasperYL/pascal-unsloth-mistral-lora-en
+- 简体中文阿獭：https://huggingface.co/CasperYL/pascal-unsloth-mistral-lora-chs
 
-# 英文 Pascal Mistral LoRA
-curl -L "TODO_ENGLISH_MISTRAL_LORA_ZIP_URL" \
-  -o lora/pascal_unsloth_mistral_lora_en.zip
+使用内置 profile 时，不需要手动下载。聊天脚本可以直接读取这些 adapter repo IDs。
 
-# 简体中文 阿獭 Mistral LoRA
-curl -L "TODO_CHINESE_MISTRAL_LORA_ZIP_URL" \
-  -o lora/pascal_unsloth_mistral_lora_chs.zip
-```
+如果你想测试自己下载的 zip，也可以把它放进 `lora/`，然后用 `--adapter` 指定。
 
 ## 本地聊天测试
 
@@ -129,7 +124,7 @@ python scripts/chat_pascal_lora.py --profile profiles/pascal_zh.json
 ```json
 {
   "name": "Pascal Chinese",
-  "adapter": "../lora/pascal_unsloth_mistral_lora_chs.zip",
+  "adapter": "CasperYL/pascal-unsloth-mistral-lora-chs",
   "system": "你是《集合啦！动物森友会》里的阿獭……",
   "labels": {
     "user": "玩家",
@@ -147,7 +142,7 @@ python scripts/chat_pascal_lora.py --profile profiles/pascal_zh.json
 }
 ```
 
-`adapter` 可以是本地 adapter 目录、本地 `.zip`，也可以是一个指向 adapter zip 的 `https://...` 链接。命令行参数会覆盖 profile 里的值。
+`adapter` 可以是 Hugging Face repo ID、本地 adapter 目录、本地 `.zip`，也可以是一个指向 adapter zip 的 `https://...` 链接。命令行参数会覆盖 profile 里的值。
 
 ## 训练
 
