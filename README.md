@@ -212,6 +212,12 @@ zip -r lora/pascal_unsloth_mistral_lora_en_small.zip lora/pascal_unsloth_mistral
 
 The chat script also skips checkpoint folders when extracting adapter zips.
 
+## License / Rights Note
+
+This is a fan-made research project for personal experimentation with character-style fine-tuning. It is not affiliated with Nintendo, Animal Crossing, or any official rights holder. Animal Crossing and Pascal belong to their respective rights holders.
+
+Please also respect the license and usage terms of the base model and any hosted LoRA adapters.
+
 ## TODO
 
 - Improve multi-turn chat quality. Current LoRAs work best in single-turn mode; with conversation history enabled, responses can drift or become repetitive because the training data is mostly single-turn.

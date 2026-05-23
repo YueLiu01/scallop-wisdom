@@ -212,6 +212,12 @@ zip -r lora/pascal_unsloth_mistral_lora_en_small.zip lora/pascal_unsloth_mistral
 
 聊天脚本在解压 adapter zip 时也会跳过 checkpoint 目录。
 
+## License / Rights Note
+
+这是一个粉丝向研究项目，用于个人实验和角色风格微调测试。本项目与 Nintendo、Animal Crossing 或任何官方权利方无关。Animal Crossing 和阿獭属于其相应权利方。
+
+请同时遵守 base model 以及已托管 LoRA adapters 的 license 和使用条款。
+
 ## TODO
 
 - 改善多轮聊天质量。目前 LoRA 在单轮模式下表现更好；开启历史记录后，回答可能会跑偏或重复，因为当前训练数据主要是单轮样本。
