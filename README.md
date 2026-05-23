@@ -217,6 +217,10 @@ zip -r lora/pascal_unsloth_mistral_lora_en_small.zip lora/pascal_unsloth_mistral
 
 The chat script also skips checkpoint folders when extracting adapter zips.
 
+## TODO
+
+- Improve multi-turn chat quality. Current LoRAs work best in single-turn mode; with conversation history enabled, responses can drift or become repetitive because the training data is mostly single-turn.
+
 ## Final Little Thought
 
 Raw quotes are pebbles. Alpaca rows are pebbles with little labels. A LoRA is what happens when the tide keeps touching the same pebbles until the model starts thinking they belong there.

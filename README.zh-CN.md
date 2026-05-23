@@ -217,6 +217,10 @@ zip -r lora/pascal_unsloth_mistral_lora_en_small.zip lora/pascal_unsloth_mistral
 
 聊天脚本在解压 adapter zip 时也会跳过 checkpoint 目录。
 
+## TODO
+
+- 改善多轮聊天质量。目前 LoRA 在单轮模式下表现更好；开启历史记录后，回答可能会跑偏或重复，因为当前训练数据主要是单轮样本。
+
 ## 最后一条小想法
 
 原始语录像小石子。Alpaca 数据像贴了标签的小石子。LoRA 就像潮水反复摸过这些石子以后，模型终于觉得它们本来就该在那里。
