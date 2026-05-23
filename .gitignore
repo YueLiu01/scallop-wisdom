@@ -6,6 +6,7 @@ finetune.ipynb
 
 # Local model artifacts and caches
 lora/
+upload_lora/
 *.zip
 *.safetensors
 *.bin
@@ -28,3 +29,4 @@ env/
 # OS/editor noise
 .DS_Store
 Thumbs.db
+upload_lora/
