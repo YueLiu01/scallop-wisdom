@@ -49,8 +49,6 @@ curl -L "TODO_CHINESE_MISTRAL_LORA_ZIP_URL" \
   -o lora/pascal_unsloth_mistral_lora_chs.zip
 ```
 
-The Qwen test LoRA is intentionally not listed here.
-
 ## Chat Locally
 
 Install local inference dependencies first. From the repo root:

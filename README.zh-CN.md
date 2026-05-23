@@ -49,8 +49,6 @@ curl -L "TODO_CHINESE_MISTRAL_LORA_ZIP_URL" \
   -o lora/pascal_unsloth_mistral_lora_chs.zip
 ```
 
-这里故意不列出 Qwen 测试版 LoRA。
-
 ## 本地聊天测试
 
 先安装本地推理依赖。在仓库根目录运行：
