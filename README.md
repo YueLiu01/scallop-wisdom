@@ -103,6 +103,36 @@ Inside the chat loop:
 /exit
 ```
 
+## Sample Outputs
+
+These are single-turn samples from the default public LoRA profiles. Generation is sampled, so your exact replies may differ.
+
+English:
+
+```text
+Player> I found something shiny near the shore.
+Pascal> It's hard to tell real gold from fool's gold. But if it's heavy, it's probably real.
+
+Player> Why do snacks taste better outside?
+Pascal> Maybe it's because food tastes better when you're eating it while ignoring your responsibilities, maaan...
+
+Player> I dropped an apple in the sand.
+Pascal> Apples are like the balls of fruit, maaan. They drop, then bounce. The others just sorta hang there.
+```
+
+Simplified Chinese:
+
+```text
+玩家> 今天阳光照在海面上很好看。
+阿獭> 现在的太阳是过去的太阳的光。
+
+玩家> 我坐在海边发呆了很久。
+阿獭> 如果真实存在的地方就是现在，那么躺在沙滩上也是冒险
+
+玩家> 岛上的大家都很忙，只有我在发呆。
+阿獭> 有些人总是忙于一点也没做的工作
+```
+
 You can override a profile's adapter:
 
 ```bash
