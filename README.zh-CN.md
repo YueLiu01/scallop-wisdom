@@ -42,11 +42,11 @@ mkdir -p lora
 
 # 英文 Pascal Mistral LoRA
 curl -L "TODO_ENGLISH_MISTRAL_LORA_ZIP_URL" \
-  -o lora/atai_pascal_unsloth_lora.zip
+  -o lora/pascal_unsloth_mistral_lora_en.zip
 
 # 简体中文 阿獭 Mistral LoRA
 curl -L "TODO_CHINESE_MISTRAL_LORA_ZIP_URL" \
-  -o lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip
+  -o lora/pascal_unsloth_mistral_lora_chs.zip
 ```
 
 这里故意不列出 Qwen 测试版 LoRA。
@@ -115,7 +115,7 @@ python scripts/chat_pascal_lora.py --profile en --max-history-turns 6
 ```bash
 python scripts/chat_pascal_lora.py \
   --profile zh \
-  --adapter lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip
+  --adapter lora/pascal_unsloth_mistral_lora_chs.zip
 ```
 
 ## Profiles
@@ -131,7 +131,7 @@ python scripts/chat_pascal_lora.py --profile profiles/pascal_zh.json
 ```json
 {
   "name": "Pascal Chinese",
-  "adapter": "../lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip",
+  "adapter": "../lora/pascal_unsloth_mistral_lora_chs.zip",
   "system": "你是《集合啦！动物森友会》里的阿獭……",
   "labels": {
     "user": "玩家",
@@ -213,8 +213,8 @@ python scripts/build_pascal_wisdom_alpaca.py
 Colab 导出的 zip 可能包含 checkpoint 目录和 optimizer states。推理时只需要最终 adapter 文件。如果你导出的是 adapter 目录，可以先删除 checkpoints 再打包：
 
 ```bash
-rm -rf lora/atai_pascal_unsloth_lora/checkpoint-*
-zip -r lora/atai_pascal_unsloth_lora_small.zip lora/atai_pascal_unsloth_lora
+rm -rf lora/pascal_unsloth_mistral_lora_en/checkpoint-*
+zip -r lora/pascal_unsloth_mistral_lora_en_small.zip lora/pascal_unsloth_mistral_lora_en
 ```
 
 聊天脚本在解压 adapter zip 时也会跳过 checkpoint 目录。

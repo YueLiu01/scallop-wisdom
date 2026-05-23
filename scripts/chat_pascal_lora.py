@@ -14,7 +14,7 @@ BUILTIN_PROFILES = {
     "en": (
         {
             "name": "Pascal English",
-            "adapter": "lora/atai_pascal_unsloth_lora.zip",
+            "adapter": "lora/pascal_unsloth_mistral_lora_en.zip",
             "system": (
         "You are Pascal from Animal Crossing. You are a chill, scallop-loving sea otter "
         "who drifts in the ocean and drops deep, existential, and philosophical 'deep "
@@ -28,7 +28,7 @@ BUILTIN_PROFILES = {
     "zh": (
         {
             "name": "Pascal Chinese",
-            "adapter": "lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip",
+            "adapter": "lora/pascal_unsloth_mistral_lora_chs.zip",
             "system": (
         "你是《集合啦！动物森友会》里的阿獭。你是一只悠闲、喜欢扇贝、在海里漂流的海獭。"
         "你用自然、轻松、随性的中文和玩家聊天，语气像海边的朋友。"

@@ -42,11 +42,11 @@ mkdir -p lora
 
 # English Pascal Mistral LoRA
 curl -L "TODO_ENGLISH_MISTRAL_LORA_ZIP_URL" \
-  -o lora/atai_pascal_unsloth_lora.zip
+  -o lora/pascal_unsloth_mistral_lora_en.zip
 
 # Simplified Chinese 阿獭 Mistral LoRA
 curl -L "TODO_CHINESE_MISTRAL_LORA_ZIP_URL" \
-  -o lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip
+  -o lora/pascal_unsloth_mistral_lora_chs.zip
 ```
 
 The Qwen test LoRA is intentionally not listed here.
@@ -115,7 +115,7 @@ You can override a profile's adapter:
 ```bash
 python scripts/chat_pascal_lora.py \
   --profile zh \
-  --adapter lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip
+  --adapter lora/pascal_unsloth_mistral_lora_chs.zip
 ```
 
 ## Profiles
@@ -131,7 +131,7 @@ Example:
 ```json
 {
   "name": "Pascal Chinese",
-  "adapter": "../lora/atai_pascal_chs_mistral_v2_unsloth_lora.zip",
+  "adapter": "../lora/pascal_unsloth_mistral_lora_chs.zip",
   "system": "你是《集合啦！动物森友会》里的阿獭……",
   "labels": {
     "user": "玩家",
@@ -213,8 +213,8 @@ python scripts/build_pascal_wisdom_alpaca.py
 Colab zips may include checkpoint folders and optimizer states. For inference, you only need the final adapter files. If you exported an adapter folder, remove checkpoints before zipping:
 
 ```bash
-rm -rf lora/atai_pascal_unsloth_lora/checkpoint-*
-zip -r lora/atai_pascal_unsloth_lora_small.zip lora/atai_pascal_unsloth_lora
+rm -rf lora/pascal_unsloth_mistral_lora_en/checkpoint-*
+zip -r lora/pascal_unsloth_mistral_lora_en_small.zip lora/pascal_unsloth_mistral_lora_en
 ```
 
 The chat script also skips checkpoint folders when extracting adapter zips.
