@@ -1,0 +1,29 @@
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Local model artifacts and caches
+lora/
+*.zip
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+.lora_cache/
+unsloth_compiled_cache/
+
+# Local tooling/session state
+.agents/
+.codex/
+
+# Environment files
+.env
+.venv/
+venv/
+env/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
