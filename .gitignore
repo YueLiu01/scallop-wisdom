@@ -19,6 +19,7 @@ unsloth_compiled_cache/
 # Local tooling/session state
 .agents/
 .codex/
+temp/
 
 # Environment files
 .env
